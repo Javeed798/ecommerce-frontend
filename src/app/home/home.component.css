@@ -1,0 +1,18 @@
+.card {
+  width: 400px;
+  height: 25vh;
+  border: 1px solid black;
+  box-sizing: border-box;
+  box-shadow: 2px solid black;
+}
+
+.card:hover {
+  width: 600px;
+  transform: scaleZ(10);
+  transition: all;
+  box-shadow: 1px solid red;
+}
+
+ul {
+  list-style-type: none;
+}
