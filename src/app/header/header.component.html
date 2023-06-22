@@ -1,17 +1,34 @@
 <mat-toolbar color="primary">
-    <span>Ecommerce Application</span>
-    <span class="space-buttons"></span>
-    <button
-        *ngIf="!isLoggedIn()"
-        routerLink="/login"
-        mat-raised-button
-        color="accent">Login</button>
-    <button
-        (click)="logout()"
-        *ngIf="isLoggedIn()"
-        mat-raised-button
-        color="warn"
-        class="mx-2">Logout</button>
+  <span>Ecommerce Application</span>
+  <span class="space-buttons"></span>
+  <button
+    *ngIf="!isLoggedIn()"
+    routerLink="/login"
+    mat-raised-button
+    color="accent"
+  >
+    Login
+  </button>
+  <button
+    (click)="logout()"
+    *ngIf="isLoggedIn()"
+    mat-raised-button
+    color="warn"
+    class="mx-2"
+  >
+    Logout
+  </button>
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="isLoggedIn()">
+  <button mat-raised-button color="primary" routerLink="/">Home</button>
+  <button
+    *ngIf="isAdmin()"
+    routerLink="/addNewProduct"
+    class="btn btn-success mx-3 bg-dark"
+  >
+    Add New Product
+  </button>
 </mat-toolbar>
 
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

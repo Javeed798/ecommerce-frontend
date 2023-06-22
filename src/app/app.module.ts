@@ -20,6 +20,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HeaderComponent,
     ForbiddenComponent,
     UserComponent,
+    AddNewProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
   ],
   providers: [
     AuthGuard,

@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <div class="card p-2">
+    <div class="row">
+      <div class="col-6">
+        <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Enter Product Name</mat-label>
+            <input
+              [(ngModel)]="product.productName"
+              matInput
+              name="productName"
+              placeholder="Enter Product Name"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Enter Product Description</mat-label>
+            <input
+              [(ngModel)]="product.productDescription"
+              matInput
+              name="productDescription"
+              placeholder="Enter Product Description"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Enter Product Discounted Price</mat-label>
+            <input
+              [(ngModel)]="product.productDiscountedPrice"
+              matInput
+              name="productDiscountedPrice"
+              placeholder="Enter Product Discounted Price"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Enter Product Actual Price</mat-label>
+            <input
+              [(ngModel)]="product.productActualPrice"
+              matInput
+              name="productActualPrice"
+              placeholder="Enter Product Actual Price"
+            />
+          </mat-form-field>
+          <div align="end">
+            <button mat-stroked-button class="mx-2" color="warn">Clear</button>
+            <button
+              class="btn bg-info text-dark"
+              mat-stroked-button
+              color="primary"
+              type="submit"
+            >
+              Add Product
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-6">
+        <input
+          type="file"
+          multiple
+          value="select"
+          #selectFile
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
