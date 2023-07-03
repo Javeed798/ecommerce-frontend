@@ -40,6 +40,10 @@ const routes: Routes = [
   {
     path: 'addNewProduct',
     component: AddNewProductComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['Admin'],
+    },
   },
 ];
 
