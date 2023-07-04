@@ -20,4 +20,10 @@ export class ProductService {
   public deleteProduct(id: any) {
     return this.http.delete('http://localhost:9090/deleteProduct/' + id);
   }
+
+  public getProductDetailsById(productId: any) {
+    return this.http.get<Product>(
+      'http://localhost:9090/getProductDetailsById/' + productId
+    );
+  }
 }
