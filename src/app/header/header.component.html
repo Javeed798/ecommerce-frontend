@@ -29,6 +29,13 @@
   >
     Add New Product
   </button>
+  <button
+    *ngIf="isAdmin()"
+    routerLink="/showProductDetails"
+    class="btn btn-success mx-3 bg-blue"
+  >
+    Show Products
+  </button>
 </mat-toolbar>
 
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
