@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="card p-3">
+    <div class="row">
+      <div class="col-6">
+        <form #orderForm="ngForm" (ngSubmit)="placeOrder(orderForm)">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input
+              [(ngModel)]="orderDetails.fullName"
+              matInput
+              name="fullName"
+              placeholder="Enter Product Name"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Full Address</mat-label>
+            <input
+              [(ngModel)]="orderDetails.fullAddress"
+              matInput
+              name="fullAddress"
+              placeholder="Enter Full Address"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Contact Number</mat-label>
+            <input
+              [(ngModel)]="orderDetails.contactNumber"
+              matInput
+              name="contactNumber"
+              placeholder="Enter Contact Number"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Alternate Contact Number</mat-label>
+            <input
+              [(ngModel)]="orderDetails.alternateContactNumber"
+              matInput
+              name="alternateContactNumber"
+              placeholder="Enter Contact Number"
+            />
+          </mat-form-field>
+
+          <div align="right">
+            <button type="submit" mat-stroked-button color="primary">
+              Place Order
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-6"></div>
+    </div>
+  </div>
+</div>
