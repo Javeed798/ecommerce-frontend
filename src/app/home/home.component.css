@@ -16,3 +16,37 @@
 ul {
   list-style-type: none;
 }
+
+mat-grid-tile {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.image-container {
+  position: relative;
+  height: 300px;
+}
+
+.home-page-product-image {
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.strike {
+  margin-left: 10px;
+  text-decoration: line-through;
+}
+
+.mat-column-description {
+  width: 35% !important;
+  justify-content: center;
+}
+
+table td {
+  padding: 50px;
+}
