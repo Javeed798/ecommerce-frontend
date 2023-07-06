@@ -47,4 +47,35 @@ export class BuyProductComponent implements OnInit {
       }
     );
   }
+
+  getQuantityForProduct(productId: any) {
+    const filteredProduct = this.orderDetails.orderProductQuantityList.filter(
+      (productQuantity) => productQuantity.productId === productId
+    );
+    return filteredProduct[0].quantity;
+  }
+
+  getCalculatedTotal(productId: any, productDiscountedPrice: any) {
+    const filteredProduct = this.orderDetails.orderProductQuantityList.filter(
+      (productQuantity) => productQuantity.productId === productId
+    );
+    return filteredProduct[0].quantity * productDiscountedPrice;
+  }
+
+  onQuantityChange(q: any, productId: any) {
+    this.orderDetails.orderProductQuantityList.filter(
+      (orderProduct) => orderProduct.productId === productId
+    )[0].quantity = q;
+  }
+
+  getCalculatedGrandTotal() {
+    let grandTotal = 0;
+    this.orderDetails.orderProductQuantityList.forEach((productQuantity) => {
+      const price = this.productDetails.filter(
+        (product) => product.productId === productQuantity.productId
+      )[0].productDiscountedPrice;
+      grandTotal = grandTotal + price * productQuantity.quantity;
+    });
+    return grandTotal;
+  }
 }
