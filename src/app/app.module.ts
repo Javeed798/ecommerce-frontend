@@ -34,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     ProductViewDetailsComponent,
     BuyProductComponent,
     OrderConfirmationComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

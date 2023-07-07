@@ -14,8 +14,10 @@ export class ProductService {
     return this.http.post('http://localhost:9090/addNewProduct', product);
   }
 
-  public getAllProducts() {
-    return this.http.get<Product[]>('http://localhost:9090/getAllProducts');
+  public getAllProducts(pageNumber: any) {
+    return this.http.get<Product[]>(
+      'http://localhost:9090/getAllProducts?pageNumber=' + pageNumber
+    );
   }
 
   public deleteProduct(id: any) {

@@ -33,9 +33,13 @@ export class ShowProductDetailsComponent implements OnInit {
     private router: Router
   ) {}
 
+  pageNumber = 0;
+  showTable = false;
+  showLoadButton = false;
   public getAllProducts() {
+    this.showTable = false;
     this.service
-      .getAllProducts()
+      .getAllProducts(this.pageNumber)
       .pipe(
         map((x: Product[], i: number) =>
           x.map((product: Product) =>
@@ -46,7 +50,15 @@ export class ShowProductDetailsComponent implements OnInit {
       .subscribe(
         (res: Product[]) => {
           console.log(res);
-          this.productDetails = res;
+          this.showTable = true;
+          res.forEach((p) => {
+            this.productDetails.push(p);
+          });
+          if (res.length == 8) {
+            this.showLoadButton = true;
+          } else {
+            this.showLoadButton = false;
+          }
         },
         (err) => console.log(err)
       );
@@ -72,6 +84,16 @@ export class ShowProductDetailsComponent implements OnInit {
   }
 
   editProduct(productId: any) {
-    this.router.navigate(['/addNewProduct', { productId: productId }]);
+    this.router.navigate([
+      '/addNewProduct',
+      {
+        productId: productId,
+      },
+    ]);
+  }
+
+  loadMoreProducts() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getAllProducts();
   }
 }

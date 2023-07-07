@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  pageNumber: number = 0;
   ngOnInit(): void {
     this.getAllProducts();
   }
   productDetails: Product[] = [];
+
+  showLoadButton = false;
 
   constructor(
     private productService: ProductService,
@@ -24,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   public getAllProducts() {
     this.productService
-      .getAllProducts()
+      .getAllProducts(this.pageNumber)
       .pipe(
         map((x: Product[], i: number) =>
           x.map((product: Product) =>
@@ -35,7 +38,12 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (res: Product[]) => {
           console.log(res);
-          this.productDetails = res;
+          if (res.length == 8) {
+            this.showLoadButton = true;
+          } else {
+            this.showLoadButton = false;
+          }
+          res.forEach((p) => this.productDetails.push(p));
         },
         (err) => console.log(err)
       );
@@ -43,5 +51,10 @@ export class HomeComponent implements OnInit {
 
   public showProductDetails(productId: any) {
     this.router.navigate(['/productViewDetails', { productId: productId }]);
+  }
+
+  loadMoreProducts() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getAllProducts();
   }
 }

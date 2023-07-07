@@ -37,6 +37,13 @@ export class UserService {
     });
   }
 
+  public register(registerData: any) {
+    return this.http.post(
+      'http://localhost:9090/registerNewUser',
+      registerData
+    );
+  }
+
   public roleMatch(allowedRoles: any): any {
     let isMatch = false;
     const userRoles: any = this.userAuthService.getRoles();
