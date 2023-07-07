@@ -25,9 +25,9 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {}
 
-  public getAllProducts() {
+  public getAllProducts(searchKey: string = '') {
     this.productService
-      .getAllProducts(this.pageNumber)
+      .getAllProducts(this.pageNumber, searchKey)
       .pipe(
         map((x: Product[], i: number) =>
           x.map((product: Product) =>
@@ -56,5 +56,12 @@ export class HomeComponent implements OnInit {
   loadMoreProducts() {
     this.pageNumber = this.pageNumber + 1;
     this.getAllProducts();
+  }
+
+  searchByKeyword(searchKeyword: any) {
+    console.log(searchKeyword);
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProducts(searchKeyword);
   }
 }

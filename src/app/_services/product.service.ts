@@ -14,9 +14,12 @@ export class ProductService {
     return this.http.post('http://localhost:9090/addNewProduct', product);
   }
 
-  public getAllProducts(pageNumber: any) {
+  public getAllProducts(pageNumber: any, searchKeyword: string = '') {
     return this.http.get<Product[]>(
-      'http://localhost:9090/getAllProducts?pageNumber=' + pageNumber
+      'http://localhost:9090/getAllProducts?pageNumber=' +
+        pageNumber +
+        '&searchKey=' +
+        searchKeyword
     );
   }
 

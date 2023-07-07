@@ -1,4 +1,17 @@
 <div class="p-3 mt-5">
+  <div class="text-center">
+    <mat-form-field appearance="outline" class="w-50 text-center mb-3">
+      <mat-label>Search Any Product</mat-label>
+      <input
+        #searchKeyword
+        (keyup)="searchByKeyword(searchKeyword.value)"
+        name="searchKey"
+        id="searchKey"
+        matInput
+        placeholder="Search Any Product"
+      />
+    </mat-form-field>
+  </div>
   <div *ngIf="showTable">
     <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
       <!--- Note that these columns can be defined in any order.

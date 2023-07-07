@@ -36,10 +36,10 @@ export class ShowProductDetailsComponent implements OnInit {
   pageNumber = 0;
   showTable = false;
   showLoadButton = false;
-  public getAllProducts() {
+  public getAllProducts(searchKey: string = '') {
     this.showTable = false;
     this.service
-      .getAllProducts(this.pageNumber)
+      .getAllProducts(this.pageNumber, searchKey)
       .pipe(
         map((x: Product[], i: number) =>
           x.map((product: Product) =>
@@ -95,5 +95,11 @@ export class ShowProductDetailsComponent implements OnInit {
   loadMoreProducts() {
     this.pageNumber = this.pageNumber + 1;
     this.getAllProducts();
+  }
+
+  searchByKeyword(searchByKeyword: string) {
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProducts(searchByKeyword);
   }
 }
