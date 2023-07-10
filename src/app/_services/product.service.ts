@@ -45,4 +45,8 @@ export class ProductService {
   public placeOrder(orderDetails: OrderDetails) {
     return this.http.post('http://localhost:9090/placeOrder', orderDetails);
   }
+
+  public addToCart(productId: any) {
+    return this.http.get('http://localhost:9090/addToCart/' + productId);
+  }
 }
