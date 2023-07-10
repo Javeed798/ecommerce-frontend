@@ -36,6 +36,13 @@
   >
     Show Products
   </button>
+  <button
+    *ngIf="isUser()"
+    routerLink="/cart"
+    class="btn btn-warning mx-3 bg-blue"
+  >
+    Cart
+  </button>
 </mat-toolbar>
 
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

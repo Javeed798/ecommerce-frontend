@@ -14,6 +14,7 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
 import { BuyProductResolverService } from './buy-product-resolver.service';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { RegisterComponent } from './register/register.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,14 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['User'],
+    },
   },
 ];
 

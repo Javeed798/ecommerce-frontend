@@ -34,8 +34,6 @@ export class BuyProductComponent implements OnInit {
         quantity: 1,
       })
     );
-    console.log(this.productDetails);
-    console.log(this.orderDetails);
   }
   public placeOrder(orderForm: NgForm) {
     return this.productService.placeOrder(this.orderDetails).subscribe(
