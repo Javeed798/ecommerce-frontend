@@ -18,6 +18,7 @@ export class BuyProductComponent implements OnInit {
   ) {}
 
   productDetails: Product[] = [];
+  isSingleProductCheckout: any = '';
 
   orderDetails: OrderDetails = {
     fullName: '',
@@ -28,6 +29,10 @@ export class BuyProductComponent implements OnInit {
   };
   ngOnInit(): void {
     this.productDetails = this.activatedRoute.snapshot.data['productDetails'];
+    this.isSingleProductCheckout = this.activatedRoute.snapshot.paramMap.get(
+      'isSingleProductCheckout'
+    );
+
     this.productDetails.forEach((x) =>
       this.orderDetails.orderProductQuantityList.push({
         productId: x.productId,
@@ -36,16 +41,18 @@ export class BuyProductComponent implements OnInit {
     );
   }
   public placeOrder(orderForm: NgForm) {
-    return this.productService.placeOrder(this.orderDetails).subscribe(
-      (res) => {
-        console.log(res);
-        orderForm.reset();
-        this.router.navigate(['/orderConfirm']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    return this.productService
+      .placeOrder(this.orderDetails, this.isSingleProductCheckout)
+      .subscribe(
+        (res) => {
+          console.log(res);
+          orderForm.reset();
+          this.router.navigate(['/orderConfirm']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
   getQuantityForProduct(productId: any) {
