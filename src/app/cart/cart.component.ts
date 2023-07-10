@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
     'Description',
     'Price',
     'DiscountedPrice',
+    'Action',
   ];
 
   getCartDetails() {
@@ -50,5 +51,17 @@ export class CartComponent implements OnInit {
         id: 0,
       },
     ]);
+  }
+
+  deleteFromCart(id: any) {
+    this.service.deleteFromCart(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.getCartDetails();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
